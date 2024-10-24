@@ -1,0 +1,53 @@
+<div class="container d-flex justify-content-center align-items-center">
+  <div class="row card p-5">
+    <img
+      class="mb-4"
+      src="assets/image/black-logo.png"
+      alt=""
+      width="72"
+      height="57"
+    />
+    <main class="form-signin w-100 m-auto">
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <h1 class="h3 mb-3 fw-normal">Please Login In</h1>
+
+        <div class="form-floating">
+          <input
+            type="email"
+            class="form-control"
+            id="floatingInput"
+            formControlName="username"
+            placeholder="name@example.com"
+            [ngClass]="{
+              'border-danger': loginForm.get('username')!.errors && is_submited
+            }"
+          />
+          <label for="floatingInput">Username</label>
+        </div>
+
+        <div class="form-floating">
+          <select
+            class="form-control"
+            formControlName="device"
+            id="floatingDevice"
+            [ngClass]="{
+              'border-danger': loginForm.get('device')!.errors && is_submited
+            }"
+          >
+            <option value="mobile">Mobile</option>
+            <option value="web">Web</option>
+          </select>
+          <label for="floatingDevice">Device</label>
+        </div>
+
+        <button class="btn btn-primary w-100 p-2 my-2" type="submit">
+          Login
+        </button>
+      </form>
+
+      <a class="text-decoration-none" [routerLink]="['/auth/register']"
+        >Register</a
+      >
+    </main>
+  </div>
+</div>

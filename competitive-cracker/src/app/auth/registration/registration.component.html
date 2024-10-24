@@ -1,0 +1,91 @@
+<div class="container d-flex justify-content-center align-items-center">
+  <div class="row card p-5">
+    <img
+      class="mb-4"
+      src="assets/image/black-logo.png"
+      alt=""
+      width="72"
+      height="57"
+    />
+    <main class="form-signin w-100 m-auto">
+      <form [formGroup]="registraionForm" (ngSubmit)="onSubmit()">
+        <h1 class="h3 mb-3 fw-normal">Please Sign Up</h1>
+
+        <div class="form-floating">
+          <input
+            type="text"
+            class="form-control"
+            id="floatingInput"
+            formControlName="name"
+            [ngClass]="{
+              'border-danger':
+                registraionForm.get('name')?.invalid && is_submited
+            }"
+          />
+          <label for="floatingInput">Name</label>
+          @if (registraionForm.get('name')?.invalid && is_submited) {
+          <div class="text-danger">Name is required</div>
+          }
+        </div>
+
+        <div class="form-floating">
+          <input
+            type="email"
+            class="form-control"
+            id="floatingemail"
+            formControlName="email"
+            [ngClass]="{
+              'border-danger':
+                registraionForm.get('email')?.invalid && is_submited
+            }"
+          />
+          <label for="floatingemail">Email</label>
+          @if (registraionForm.get('email')?.invalid && is_submited) {
+          <div class="text-danger">A valid email is required</div>
+          }
+        </div>
+
+        <div class="form-floating">
+          <input
+            type="text"
+            class="form-control"
+            id="floatingMobile"
+            formControlName="mobile"
+            [ngClass]="{
+              'border-danger':
+                registraionForm.get('mobile')?.invalid && is_submited
+            }"
+          />
+          <label for="floatingMobile">Mobile</label>
+          @if (registraionForm.get('mobile')?.invalid && is_submited) {
+          <div class="text-danger">Mobile number is required</div>
+          }
+        </div>
+
+        <div class="form-floating">
+          <select
+            class="form-control"
+            formControlName="device"
+            id="floatingDevice"
+            [ngClass]="{
+              'border-danger':
+                registraionForm.get('device')?.invalid && is_submited
+            }"
+          >
+            <option value="mobile">Mobile</option>
+            <option value="web">Web</option>
+          </select>
+          <label for="floatingDevice">Device</label>
+          @if (registraionForm.get('device')?.invalid && is_submited) {
+          <div class="text-danger">Please select a device.</div>
+          }
+        </div>
+
+        <button class="btn btn-primary w-100 p-2 my-2" type="submit">
+          Register
+        </button>
+      </form>
+      <a class="text-decoration-none" [routerLink]="['/auth/login']">Login</a>
+    </main>
+  </div>
+</div>
